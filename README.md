@@ -12,9 +12,9 @@ Copy and past larsocai.github.io into the URL to view. Or clone the repository: 
 
 Will update the portfolio as new projects are completed.
 
-License Info:
+<strong>Licensing</strong>
 
-MIT
+<a href="https://choosealicense.com/licenses/mit/" target="blank">MIT</a>
 
 Copyright (c) 2023 Caitlyn Larson
 
