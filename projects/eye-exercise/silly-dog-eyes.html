@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Silly Dog Eyes | Project</title>
+    <style>
+        body{
+          background: url(./Dog.jpg);
+          height: 950px;
+          background-attachment: fixed;
+          background-position-x: 50%; 
+          background-position-y: 40%;
+          background-repeat: no-repeat;
+          margin-top: 15px;
+          
+        }
+
+        h1{
+          text-align: center;
+          font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+          text-shadow: 1.5px 1.5px white;
+        }
+
+        .eyes {
+          position: fixed;
+          top: 40%;
+          transform: translateY(-50%);
+          width: 100%;
+          height: fixed;
+          text-align: center;
+          
+        }
+
+        .eye {
+          width: 102px;
+          height: 90px;
+          background: #fff;
+          border: 5px solid black;
+          display: inline-block;
+          margin: 65px;
+          border-radius: 50%;
+          position: relative;
+          overflow: hidden;
+        }
+        .ball {
+          width: 10px;
+          height: 10px;
+          border: 30px solid black;
+          background: #fff;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          border-radius: 50%;
+        }
+    </style>
+  </head>
+
+
+  <body style="cursor: url('./bone-cursorV1.png'), auto;">
+    <div class="container">
+    <h1>Eye Exercise</h1>
+    <div class="eyes">
+      <div class="eye">
+        <div class="ball"></div>
+      </div>
+      <div class="eye">
+        <div class="ball"></div>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    var balls = document.getElementsByClassName("ball");
+    document.onmousemove = () => {
+      var x = (event.clientX * 100) / window.innerWidth + "%";
+      var y = (event.clientY * 100) / window.innerHeight + "%";
+
+      for (let i = 0; i < 2; i++) {
+        balls[i].style.left = x;
+        balls[i].style.top = y;
+        balls[i].transfoorm = "translate(-" + x + ",-" + y + ")";
+      }
+    };
+  </script>
+</body>
+</html>

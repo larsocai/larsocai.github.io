@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo of Racetrack | Caitlyn Larson | Portfolio</title>
+<style>
+    body {
+        max-width: 1800px;
+        background-image: url('RacetrackV2.jpg');
+        background-attachment: local;
+        background-size: fixed;
+        background-repeat: no-repeat;
+        /* background-position-y: 100px; */
+    }
+    h1 {
+        text-align: center;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        font-size: 50px;
+        padding-top: 25px;
+    }
+
+    div {
+        text-align: center;
+    }
+
+    button {
+        background-color: orange;
+        border-radius: 5px;
+        padding: 20px 45px;
+        border-color: darkorange;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        font-size: 25px;
+        font-style: bold;
+        margin: 5px;
+    }
+
+</style>
+</head>
+<body>
+    <h1>Welcome to the Racetrack</h1>
+    <div><button id='go' onclick="go()">GO</button>
+    <button id='reset' onclick="reset()">RESET</button></div>
+        <div id= "ballA" style="
+                    z-index: 5;
+                    position: absolute;
+                    left: 0px;
+                    top: 375px;
+                    width: 160px;
+                    height: 79px;
+                    background-image: url(Yellow\ CarV2.png);">
+                </div>
+        <div id= "ballB" style="
+                    z-index: 8;
+                    position: absolute;
+                    left: 0px;
+                    top: 625px;
+                    width: 181px;
+                    height: 83px;
+                    background-image: url(Blue\ CarV2.png);">
+                </div>
+<script>
+    var ballA = document.getElementById("ballA");
+    let positionAX = 0;
+    let velocityA= 0;
+    let reverseA = false;
+    let XminA = 0;
+    let XmaxA = 1700;
+
+    function moveBallA(value) {
+        if (reverseA) {
+            positionAX = positionAX - value;
+            ballA.style.left = positionAX + "px";
+        } 
+        else {
+            positionAX = positionAX + value;
+            ballA.style.left = positionAX + "px";
+        }
+
+        if (positionAX > XmaxA) {
+            // Set the position to the maximum boundary
+            positionAX = XmaxA;
+        } else if (positionAX < XminA) {
+            // Set the position to the minimum boundary
+            positionAX = XminA;
+        }   
+    }
+
+    var ballB = document.getElementById("ballB");
+    let positionBX = 0;
+    let velocityB= 0;
+    let reverseB = false;
+    let XminB = 0;
+    let XmaxB = 1700;
+
+
+    function moveBallB(value) {
+        if (reverseB) {
+            positionBX = positionBX - value;
+            ballB.style.left = positionBX + "px";
+        } 
+        else {
+            positionBX = positionBX + value;
+            ballB.style.left = positionBX + "px";
+        }
+
+        if (positionBX > XmaxB) {
+            // Set the position to the maximum boundary
+            positionBX = XmaxB;
+
+        } else if (positionAX < XminB) {
+            // Set the position to the minimum boundary
+            positionBX = XminB;
+        }    
+    }
+
+    let timer = null;
+    function go() {
+        let ballAVelocity = 1; // Start with a velocity of 1
+        let ballBVelocity = 1; // Start with a velocity of 1
+
+        timer = setTimeout(() => {
+            go();
+        }, 50);
+
+        if (positionAX < XmaxA) {
+            ballAVelocity = Math.floor(Math.random() * 75) + 1;
+        }
+
+        if (positionBX < XmaxB) {
+            ballBVelocity = Math.floor(Math.random() * 75) + 1;
+        }
+
+        moveBallA(ballAVelocity);
+        moveBallB(ballBVelocity);
+    }
+    
+    function reset() {
+        clearTimeout(timer); // Stop the timer
+        positionAX = 0;
+        velocityA = 0;
+        reverseA = false;
+        ballA.style.left = positionAX + "px"; // Reset the position of ballA
+        positionBX = 0;
+        velocityB = 0;
+        reverseB = false;
+        ballB.style.left = positionBX + "px"; // Reset the position of ballB
+    }
+
+    document.querySelector('#go').addEventListener('click', go());
+    document.querySelector('#reset').addEventListener('click', reset());
+    // if(document.querySelector('#ballA').)
+
+</script>
+
+</body>
+</html>
